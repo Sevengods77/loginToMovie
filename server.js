@@ -86,8 +86,8 @@ app.post('/api/register', async (req, res) => {
         res.status(201).json({ success: true, message: 'Registration successful! Redirecting to login...' });
 
     } catch (err) {
-        console.error('❌ Registration error:', err.message);
-        res.status(500).json({ success: false, message: 'Server error. Please try again.' });
+        console.error('❌ Registration full error:', err);
+        res.status(500).json({ success: false, message: `Server error: ${err.message}` });
     }
 });
 
@@ -143,8 +143,8 @@ app.post('/api/login', async (req, res) => {
         });
 
     } catch (err) {
-        console.error('❌ Login error:', err.stack);
-        res.status(500).json({ success: false, message: 'Server error. Please try again.' });
+        console.error('❌ Login full error:', err);
+        res.status(500).json({ success: false, message: `Server error: ${err.message}` });
     }
 });
 
